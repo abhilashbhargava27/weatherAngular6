@@ -1,7 +1,5 @@
-export class userDetail {
-	constructor(
-		public name:string
-		public email: string,
-		public password: string
-	) {}
+export interface UserDetails {
+	name : string,
+	email : string,
+	password : string
 }

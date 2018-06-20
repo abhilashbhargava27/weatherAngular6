@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { userDetails } from '../../model/userDetails.model';
+import { UserDetails } from '../../model/userDetails.model';
 import { Router } from '@angular/router'
 
 @Component({
@@ -10,36 +10,39 @@ import { Router } from '@angular/router'
 
 export class SignUpComponent implements OnInit {
   
-  userDetails : userDetails[];
+  userDetails : UserDetails;
 
   @ViewChild('userForm') form : any;
 
   constructor(private router:Router) { }
 
   ngOnInit() {
+    
     this.userDetails = {
-      name:'',
-      email:'',
-      password:''
+      name : '',
+      email : '',
+      password : ''
     }
+
+    var storedName = localStorage.getItem('name');
     var storedEmail = localStorage.getItem('email');
     var storedPassword = localStorage.getItem('password');
 
-    if(storedEmail && storedPassword) {
+    if(storedName && storedEmail && storedPassword) {
       console.log("exists")
       this.router.navigateByUrl('weather-data');
     }
   }
 
-  signupUser({ value, valid }: { value:userDetails, valid:boolean }) {
+  signupUser({ value, valid } : { value:UserDetails, valid:boolean }) {
     if(!valid){
       console.log("form is not valid") //This will never be printed coz of validation at client end
     }else{
-      var name = localStorage.getItem('name');
+      var storedName = localStorage.getItem('name');
       var storedEmail = localStorage.getItem('email');
       var storedPassword = localStorage.getItem('password');
 
-      if(name && storedEmail && storedPassword) {
+      if(storedName && storedEmail && storedPassword) {
         console.log("Details Exists")
         this.router.navigateByUrl('weather-data');
       }else {
@@ -50,6 +53,7 @@ export class SignUpComponent implements OnInit {
         localStorage.setItem('name', name);
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);
+
         this.router.navigateByUrl('weather-data');
       }
     }
