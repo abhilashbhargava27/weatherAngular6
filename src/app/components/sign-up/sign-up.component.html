@@ -62,6 +62,12 @@
               Must be at least 5 characters.
             </div>
           </div>
+          <div class="form-group">
+            <label for="userImage">Select Image</label>
+            <input type="file" src=" " id="uploadUserImage" crossOrigin='Anonymous' (ngModelChange)="readURL(this)"/>
+            <img src="" id="bannerImage">
+          </div>
+
           <button [disabled]="!userForm.form.valid" class="btn btn-primary btn-block">Submit</button>
         </form>
       </div>

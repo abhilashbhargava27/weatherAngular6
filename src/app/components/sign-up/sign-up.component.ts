@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserDetails } from '../../model/userDetails.model';
 import { Router } from '@angular/router'
 
@@ -14,7 +14,9 @@ export class SignUpComponent implements OnInit {
 
   @ViewChild('userForm') form : any;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private elementRef: ElementRef) { 
+    this.elementRef = elementRef;
+  }
 
   ngOnInit() {
     
@@ -50,6 +52,11 @@ export class SignUpComponent implements OnInit {
         const email = value.email;
         const password = value.password
 
+        const bannerImage = this.elementRef.nativeElement.querySelector('#bannerImage');
+        console.log(bannerImage.src)
+        const imgData = this.getBase64Image(bannerImage);
+
+        localStorage.setItem("imgData", imgData);
         localStorage.setItem('name', name);
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);
@@ -57,6 +64,33 @@ export class SignUpComponent implements OnInit {
         this.router.navigateByUrl('weather-data');
       }
     }
-      
+  }
+  readURL(input) {
+    console.log("inside readUrl")
+    this.elementRef.nativeElement.querySelector("#bannerImage").style.display = "block";
+    var that = this;
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            console.log(e)
+            //that.elementRef.nativeElement.querySelector('#bannerImage').src =  e.target.result;
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    var dataURL = canvas.toDataURL("image/png");
+
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   }
 }

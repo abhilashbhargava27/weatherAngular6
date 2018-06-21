@@ -2,12 +2,13 @@ import {
     Component,
     OnInit,
     ElementRef,
-    Inject
+    Inject,
+    Input,
+    NgZone
 } from '@angular/core';
 import {
     HttpClient
 } from '@angular/common/http';
-
 import {
     catchError,
     map,
@@ -23,7 +24,11 @@ declare var google: any;
 })
 export class WeatherDataComponent implements OnInit {
 
-    constructor(private elementRef: ElementRef, private http: HttpClient) {
+    humidity = 0;
+
+    //@Input() humidity: number;
+
+    constructor(private zone: NgZone, private elementRef: ElementRef, private http: HttpClient) {
         this.elementRef = elementRef;
     }
 
@@ -35,10 +40,12 @@ export class WeatherDataComponent implements OnInit {
         script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD1VrN_wtyp9e4hfkhSI3pDYYr1hrI-AcA&sensor=false&libraries=places&callback=googleMapsReady";
         this.getLocation();
     }
-    
+
     getWeatherData(city) {
         this.http.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=43b9e8c04ab96f4ecce7d6d1fd45b859").
-        subscribe((data) => console.log(data))
+        subscribe((data) => {
+          setTimeout(() => this.displayWeatherDetails(data),100)
+          })
     }
 
     autocomplete() {
@@ -92,5 +99,18 @@ export class WeatherDataComponent implements OnInit {
         });
 
     }
+    ngOnChanges() {
+        console.log(this.humidity, 'from on change ng');
+    }
+    displayWeatherDetails(weatherDetails) {
 
+        console.log(typeof(weatherDetails.main.humidity))
+
+        //setTimeout( () => this.humidity = weatherDetails.main.humidity, 0);
+
+        this.humidity = weatherDetails.main.humidity;
+
+        console.log(this.humidity, 'humidity from display weather details')
+
+    }
 }
