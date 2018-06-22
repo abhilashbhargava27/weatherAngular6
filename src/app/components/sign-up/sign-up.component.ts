@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserDetails } from '../../model/userDetails.model';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sign-up',
@@ -31,7 +31,6 @@ export class SignUpComponent implements OnInit {
     var storedPassword = localStorage.getItem('password');
 
     if(storedName && storedEmail && storedPassword) {
-      console.log("exists")
       this.router.navigateByUrl('weather-data');
     }
   }
@@ -45,18 +44,12 @@ export class SignUpComponent implements OnInit {
       var storedPassword = localStorage.getItem('password');
 
       if(storedName && storedEmail && storedPassword) {
-        console.log("Details Exists")
         this.router.navigateByUrl('weather-data');
       }else {
         const name = value.name;
         const email = value.email;
         const password = value.password
 
-        const bannerImage = this.elementRef.nativeElement.querySelector('#bannerImage');
-        console.log(bannerImage.src)
-        const imgData = this.getBase64Image(bannerImage);
-
-        localStorage.setItem("imgData", imgData);
         localStorage.setItem('name', name);
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);
@@ -65,32 +58,44 @@ export class SignUpComponent implements OnInit {
       }
     }
   }
+
   readURL(input) {
-    console.log("inside readUrl")
-    this.elementRef.nativeElement.querySelector("#bannerImage").style.display = "block";
+    
+    this.elementRef.nativeElement.querySelector("#userImage").style.display = "block";
+    
     var that = this;
-    if (input.files && input.files[0]) {
+    
+    var imgObj = that.elementRef.nativeElement.querySelector('#uploadUserImage');
+
+    if (imgObj.files && imgObj.files[0]) {
         var reader = new FileReader();
 
-        reader.onload = function (e) {
-            console.log(e)
-            //that.elementRef.nativeElement.querySelector('#bannerImage').src =  e.target.result;
-        }
+        reader.onload = function (e:any) {
+          var targetObj = e.target;
+          that.elementRef.nativeElement.querySelector('#userImage').src =  targetObj.result;
+        }.bind(this);
 
-        reader.readAsDataURL(input.files[0]);
+        reader.readAsDataURL(imgObj.files[0]);
     }
+
+    var userProfileImage = this.elementRef.nativeElement.querySelector('#userImage');
+    var imgData = this.getBase64Image(userProfileImage);
+
+    localStorage.setItem("imgData", imgData);
   }
 
   getBase64Image(img) {
+    
     var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
+
+    canvas.width = 300;
+    canvas.height = 227;
 
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
 
     var dataURL = canvas.toDataURL("image/png");
-
+    
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   }
 }

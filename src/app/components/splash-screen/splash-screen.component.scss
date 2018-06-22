@@ -1,0 +1,57 @@
+.splashScreen {
+	height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #007bff;
+  transition: opacity 3s;
+	opacity:1;
+}
+.splashInstruction {
+	color: #FFFFFF;
+	font-size: 24px;
+	text-align: center;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+}
+.loading {
+  height: 20px;
+  position: relative;
+  top: 50%;
+  /* border: 1px solid #ddd; */
+}
+.dot {
+  width: 4px;
+  height: 4px;
+  left: -10%;
+  margin: auto;
+  border-radius: 5px;
+  background: white;
+  position: absolute;
+}
+#dot1 {
+  animation: dotslide 2.8s infinite cubic-bezier(0.2, .8, .8, 0.2);
+}
+#dot2 {
+  animation: dotslide 2.8s .2s infinite cubic-bezier(0.2, .8, .8, 0.2);
+}
+#dot3 {
+  animation: dotslide 2.8s .4s infinite cubic-bezier(0.2, .8, .8, 0.2);
+}
+#dot4 {
+  animation: dotslide 2.8s .6s infinite cubic-bezier(0.2, .8, .8, 0.2);
+}
+#dot5 {
+  animation: dotslide 2.8s .8s infinite cubic-bezier(0.2, .8, .8, 0.2);
+}
+@keyframes dotslide {
+  0% {
+    left: -20%;
+  }
+  100% {
+    left: 110%;
+  }
+}

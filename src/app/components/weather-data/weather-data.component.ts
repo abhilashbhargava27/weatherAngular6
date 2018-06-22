@@ -1,19 +1,8 @@
-import {
-    Component,
-    OnInit,
-    ElementRef,
-    Inject,
-    Input,
-    NgZone
-} from '@angular/core';
-import {
-    HttpClient
-} from '@angular/common/http';
-import {
-    catchError,
-    map,
-    tap
-} from 'rxjs/operators';
+import { Component, OnInit, ElementRef, Inject, Input, ChangeDetectorRef  } from '@angular/core';
+import { HttpClient } from '@angular/common/http'; 
+import { Router } from '@angular/router'
+
+import { catchError, map, tap } from 'rxjs/operators';
 
 declare var google: any;
 
@@ -23,29 +12,47 @@ declare var google: any;
     styleUrls: ['./weather-data.component.scss']
 })
 export class WeatherDataComponent implements OnInit {
+    
+    userName : string;
+    humidity : number  = 0;
+    pressure : number = 0;
+    temp : number = 0;
+    temp_max : number = 0;
+    temp_min : number = 0;
+    city : string;
+    weather : string;
+    searchBox : boolean = false;
+    detailsFetched : boolean = false;
+    weatherData : any = [];
 
-    humidity = 0;
-
-    //@Input() humidity: number;
-
-    constructor(private zone: NgZone, private elementRef: ElementRef, private http: HttpClient) {
+    constructor(
+        private cdr: ChangeDetectorRef, 
+        private elementRef: ElementRef,
+        private http: HttpClient,
+        private router:Router
+    ) {
         this.elementRef = elementRef;
     }
 
     ngOnInit() {
-        ( < any > window).googleMapsReady = this.autocomplete.bind(this);
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        document.getElementsByTagName("head")[0].appendChild(script);
-        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD1VrN_wtyp9e4hfkhSI3pDYYr1hrI-AcA&sensor=false&libraries=places&callback=googleMapsReady";
-        this.getLocation();
+        this.userName = localStorage.getItem('name');
+        this.weatherData = JSON.parse(localStorage.getItem("weatherReportDetail"));
+        console.log(this.weatherData,'weatherDataExists')
+        if(!this.userName) {
+            this.router.navigateByUrl('/signup');
+        }
+        var dataImage = localStorage.getItem('imgData');
+        console.log(dataImage)
+        var userImage = this.elementRef.nativeElement.querySelector('#userProfileImage');
+        //userImage.src = "data:image/png;base64," + dataImage;
+
     }
 
     getWeatherData(city) {
         this.http.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=43b9e8c04ab96f4ecce7d6d1fd45b859").
         subscribe((data) => {
-          setTimeout(() => this.displayWeatherDetails(data),100)
-          })
+          this.displayWeatherDetails(data);
+        })
     }
 
     autocomplete() {
@@ -53,20 +60,14 @@ export class WeatherDataComponent implements OnInit {
         var places = new google.maps.places.Autocomplete(this.elementRef.nativeElement.querySelector('#txtPlaces'));
 
         google.maps.event.addListener(places, 'place_changed', () => {
-            console.log(places.getPlace());
+
             var address = places.getPlace().formatted_address;
             var value = address.split(",");
             var count = value.length;
             var city = value[count - 3];
-            console.log(city, 'city');
+
             this.getWeatherData(city);
         });
-    }
-
-    gettingJSON() {
-        //$.getJSON("http://api.openweathermap.org/data/2.5/weather?q=London&APPID=43b9e8c04ab96f4ecce7d6d1fd45b859", function(json) {
-        //console.log(json)
-        //})
     }
 
     getLocation() {
@@ -99,18 +100,67 @@ export class WeatherDataComponent implements OnInit {
         });
 
     }
-    ngOnChanges() {
-        console.log(this.humidity, 'from on change ng');
+
+    logout() {
+      localStorage.clear();
+      this.router.navigateByUrl('/');
     }
+
+    toggleHide() {
+      this.searchBox = !this.searchBox;
+
+      ( < any > window).googleMapsReady = this.autocomplete.bind(this);
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        document.getElementsByTagName("head")[0].appendChild(script);
+        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD1VrN_wtyp9e4hfkhSI3pDYYr1hrI-AcA&sensor=false&libraries=places&callback=googleMapsReady";
+        
+        this.getLocation();
+    }
+    
     displayWeatherDetails(weatherDetails) {
+        this.detailsFetched = true;
+        
+        this.weather = weatherDetails.weather[0].main;
 
-        console.log(typeof(weatherDetails.main.humidity))
+        var weatherReportDetail = [{ 
+          "name": weatherDetails.name,
+          "humidity": weatherDetails.main.humidity,
+          "pressure": weatherDetails.main.pressure,
+          "temp": weatherDetails.main.temp - 273.15,
+          "temp_max": weatherDetails.main.temp_max - 273.15,
+          "temp_min": weatherDetails.main.temp_min - 273.15
+        }];
 
-        //setTimeout( () => this.humidity = weatherDetails.main.humidity, 0);
+        var stored = JSON.parse(localStorage.getItem("weatherReportDetail"));
+        
+        if(stored!=null) {
+          var isPresent = false;
+          for(var i = 0; i<stored.length; i++) {
+            if(stored[i].name==weatherDetails.name) {
+              isPresent = true;
+              break;
+            }
+          }
+          if(!isPresent) {
+            stored.push({ 
+              "name": weatherDetails.name,
+              "humidity": weatherDetails.main.humidity,
+              "pressure": weatherDetails.main.pressure,
+              "temp": weatherDetails.main.temp - 273.15,
+              "temp_max": weatherDetails.main.temp_max - 273.15,
+              "temp_min": weatherDetails.main.temp_min - 273.15
+            });  
+            localStorage.setItem("weatherReportDetail", JSON.stringify(stored));
+          }
+        }else {
+          localStorage.setItem("weatherReportDetail", JSON.stringify(weatherReportDetail));
+        }
 
-        this.humidity = weatherDetails.main.humidity;
-
-        console.log(this.humidity, 'humidity from display weather details')
-
+        var result = JSON.parse(localStorage.getItem("weatherReportDetail"));
+        this.weatherData = result;
+        
+        //To detect changes
+        this.cdr.detectChanges();
     }
 }

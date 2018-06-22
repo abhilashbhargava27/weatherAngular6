@@ -1,21 +1,62 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
-	<div class="container">Weather Details</div>
-	<button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
-  <button id="butAdd" class="headerButton" aria-label="Add"></button>
-  <!-- <button id="butLogout" class="headerButton" aria-label="Add"></button> -->
+	<div class="container">
+    <div class="weatherHeader">Weather Details</div>
+  </div>
+  <button id="butLogout" class="headerButton" aria-label="logout" (click)="logout()"></button>
 </nav>
+
 <div class="row justify-content-md-center">
   <div class="col-md-10">
+    
+    <!-- <img src="" id="userProfileImage"/> -->
     <div class="card">
       <div class="card-body">
-        User Name
-        User Photo
+        <div class="userName ml-2">Hi {{userName}}</div>
+        <div class="row ml-2">
+          <div class="infoToStart mb-3">Click on Add a city to get the forecast details for the city!!</div>
+        </div>
+        <div class="row ml-2 mb-3">
+          <button (click)="toggleHide()" class="btn btn-dark btn-sm">Add a City</button>
+          <span *ngIf = "searchBox" class="ml-4">
+            <input id="txtPlaces" type="text" placeholder="Enter a location" size=45>  
+          </span>
+        </div>
+        <!-- <div *ngIf = "detailsFetched"> -->
+          <ng-template ngFor let-item [ngForOf]="weatherData" let-i="index">
+            <div class="container">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row text-center">
+                    <div class="col-sm-12 col-md-2">
+                      <div class="citySelected">{{item.name}}</div>      
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                      <div class="weatherDetails">{{item.humidity}}</div>      
+                      <div class="weatherCategory">Humidity</div>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                      <div class="weatherDetails">{{item.pressure}}</div>    
+                      <div class="weatherCategory">Pressure</div>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                      <div class="weatherDetails">{{item.temp | number:'1.0-0'}}&#8451;</div>    
+                      <div class="weatherCategory">Temperature</div>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                      <div class="weatherDetails">{{item.temp_max | number:'1.0-0'}}&#8451;</div>
+                      <div class="weatherCategory">Max. Temp</div>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                      <div class="weatherDetails">{{item.temp_min | number:'1.0-0'}}&#8451;</div>
+                      <div class="weatherCategory">Min. Temp</div>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        <!-- </div> -->
       </div>
     </div>
-    <button (click)="toggleHide()" class="btn btn-dark btn-sm">City</button>
-    <input id="txtPlaces" type="text" placeholder="Enter a location" size=45>
-    <button class="btn btn-primary btn-block">Get Weather</button>
-    <img src="" id="userImage" />
-    <span *ngIf="humidity>0">{{humidity}} humidity</span>
   </div>
 </div>

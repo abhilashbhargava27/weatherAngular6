@@ -6,17 +6,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { WeatherDataComponent } from './components/weather-data/weather-data.component';
+import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
-    LoginComponent,
     NotFoundComponent,
-    WeatherDataComponent
+    WeatherDataComponent,
+    SplashScreenComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
