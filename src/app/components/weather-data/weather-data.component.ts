@@ -49,7 +49,7 @@ export class WeatherDataComponent implements OnInit {
     }
 
     getWeatherData(city) {
-        this.http.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=43b9e8c04ab96f4ecce7d6d1fd45b859").
+        this.http.get("//api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=43b9e8c04ab96f4ecce7d6d1fd45b859").
         subscribe((data) => {
           this.displayWeatherDetails(data);
         })
@@ -90,6 +90,7 @@ export class WeatherDataComponent implements OnInit {
         }, function(results, status) {
             if (status === 'OK') {
                 if (results[0]) {
+                    //code to get the weather details for the location detected
                     console.log(results, "result of geocoder")
                 } else {
                     console.log('No results found');
@@ -113,7 +114,7 @@ export class WeatherDataComponent implements OnInit {
         var script = document.createElement("script");
         script.type = "text/javascript";
         document.getElementsByTagName("head")[0].appendChild(script);
-        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD1VrN_wtyp9e4hfkhSI3pDYYr1hrI-AcA&sensor=false&libraries=places&callback=googleMapsReady";
+        script.src = "//maps.googleapis.com/maps/api/js?key=AIzaSyD1VrN_wtyp9e4hfkhSI3pDYYr1hrI-AcA&sensor=false&libraries=places&callback=googleMapsReady";
         
         this.getLocation();
     }
