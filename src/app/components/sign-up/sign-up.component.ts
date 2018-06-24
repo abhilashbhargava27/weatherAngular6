@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserDetails } from '../../model/userDetails.model';
 import { Router } from '@angular/router';
+import { Globals } from '../../globalVariable/globalVariable';
 
 @Component({
   selector: 'sign-up',
@@ -11,10 +12,11 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
   
   userDetails : UserDetails;
+  storedNameArray : any = [];
 
   @ViewChild('userForm') form : any;
 
-  constructor(private router:Router, private elementRef: ElementRef) { 
+  constructor(private router:Router, private elementRef: ElementRef, private globals: Globals) { 
     this.elementRef = elementRef;
   }
 
@@ -25,37 +27,27 @@ export class SignUpComponent implements OnInit {
       email : '',
       password : ''
     }
-
-    var storedName = localStorage.getItem('name');
-    var storedEmail = localStorage.getItem('email');
-    var storedPassword = localStorage.getItem('password');
-
-    if(storedName && storedEmail && storedPassword) {
-      this.router.navigateByUrl('weather-data');
-    }
+  }
+  signInPage() {
+    this.router.navigateByUrl('signin');
   }
 
-  signupUser({ value, valid } : { value:UserDetails, valid:boolean }) {
+  signUpUser({ value, valid } : { value:UserDetails, valid:boolean }) {
     if(!valid){
       console.log("form is not valid") //This will never be printed coz of validation at client end
     }else{
-      var storedName = localStorage.getItem('name');
-      var storedEmail = localStorage.getItem('email');
-      var storedPassword = localStorage.getItem('password');
+      const name = value.name;
+      const email = value.email;
+      const password = value.password
 
-      if(storedName && storedEmail && storedPassword) {
-        this.router.navigateByUrl('weather-data');
-      }else {
-        const name = value.name;
-        const email = value.email;
-        const password = value.password
+      localStorage.setItem('name', name);
+      localStorage.setItem('email', email);
+      localStorage.setItem('password', password);
+      localStorage.removeItem("weatherReportDetail");
 
-        localStorage.setItem('name', name);
-        localStorage.setItem('email', email);
-        localStorage.setItem('password', password);
+      this.globals.userSignedIn = true;
 
-        this.router.navigateByUrl('weather-data');
-      }
+      this.router.navigateByUrl('weather-data');
     }
   }
 
@@ -68,19 +60,19 @@ export class SignUpComponent implements OnInit {
     var imgObj = that.elementRef.nativeElement.querySelector('#uploadUserImage');
 
     if (imgObj.files && imgObj.files[0]) {
-        var reader = new FileReader();
+      var reader = new FileReader();
 
-        reader.onload = function (e:any) {
-          var targetObj = e.target;
-          that.elementRef.nativeElement.querySelector('#userImage').src =  targetObj.result;
-        }.bind(this);
+      reader.onload = function (e:any) {
+        var targetObj = e.target;
+        that.elementRef.nativeElement.querySelector('#userImage').src =  targetObj.result;
+      }.bind(this);
 
-        reader.readAsDataURL(imgObj.files[0]);
+      reader.readAsDataURL(imgObj.files[0]);
     }
 
     var userProfileImage = this.elementRef.nativeElement.querySelector('#userImage');
     var imgData = this.getBase64Image(userProfileImage);
-
+    console.log(imgData,'imgData');
     localStorage.setItem("imgData", imgData);
   }
 
