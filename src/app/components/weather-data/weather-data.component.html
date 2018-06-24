@@ -17,7 +17,7 @@
         </div>
         <div class="row ml-2 mb-3">
           <button (click)="toggleHide()" class="btn btn-dark btn-sm">Add a City</button>
-          <span *ngIf = "searchBox" class="ml-4">
+          <span *ngIf = "searchBoxVisibility" class="ml-4">
             <input id="txtPlaces" type="text" placeholder="Enter a location" size=45>  
           </span>
         </div>

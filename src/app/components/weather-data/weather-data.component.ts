@@ -22,7 +22,7 @@ export class WeatherDataComponent implements OnInit {
     temp_min : number = 0;
     city : string;
     weather : string;
-    searchBox : boolean = false;
+    searchBoxVisibility : boolean = false;
     detailsFetched : boolean = false;
     weatherData : any = [];
 
@@ -37,14 +37,13 @@ export class WeatherDataComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.userName = localStorage.getItem('name');
-        this.weatherData = JSON.parse(localStorage.getItem("weatherReportDetail"));
+      this.userName = localStorage.getItem('name');
+      this.weatherData = JSON.parse(localStorage.getItem("weatherReportDetail"));
 
-        //var dataImage = localStorage.getItem('imgData');
-        
-        //var userImage = this.elementRef.nativeElement.querySelector('#userProfileImage');
-        //userImage.src = "data:image/png;base64," + dataImage;
-
+      //var dataImage = localStorage.getItem('imgData');
+      
+      //var userImage = this.elementRef.nativeElement.querySelector('#userProfileImage');
+      //userImage.src = "data:image/png;base64," + dataImage;
     }
 
     getWeatherData(city) {
@@ -56,15 +55,14 @@ export class WeatherDataComponent implements OnInit {
 
     autocomplete() {
       var places = new google.maps.places.Autocomplete(this.elementRef.nativeElement.querySelector('#txtPlaces'));
-
       google.maps.event.addListener(places, 'place_changed', () => {
-
+        if(places.getPlace().formatted_address){
           var address = places.getPlace().formatted_address;
           var value = address.split(",");
           var count = value.length;
           var city = value[count - 3];
-          //console.log(city);
           this.getWeatherData(city);
+        }
       });
     }
 
@@ -98,6 +96,7 @@ export class WeatherDataComponent implements OnInit {
           }
         });
     }
+
     displayAutoDetectWeather(autoDetectArea) {
       var valueAutoComplete = autoDetectArea.split(",");
       var countAutoComplete = valueAutoComplete.length;
@@ -112,7 +111,7 @@ export class WeatherDataComponent implements OnInit {
     }
 
     toggleHide() {
-      this.searchBox = !this.searchBox;
+      this.searchBoxVisibility = !this.searchBoxVisibility;
 
       ( < any > window).googleMapsReady = this.autocomplete.bind(this);
         var script = document.createElement("script");
