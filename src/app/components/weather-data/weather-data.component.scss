@@ -6,24 +6,61 @@
 .headerButton {
   width: 50px;
   height: 50px;
-  margin-right: 16px;
-  text-indent: -30000px;
-  overflow: hidden;
   opacity: 0.7;
-  transition: opacity 0.333s cubic-bezier(0,0,0.21,1);
   border: none;
-  outline: none;
   cursor: pointer;
 }
 #butLogout {
   background: url(../../../assets/images/logout.svg) center center no-repeat; 
 }
+.no-gutter {
+  padding-left: 0;
+  padding-right: 0;
+}
+.smallPadding-0 {
+  padding-bottom: 0;
+}
 .citySelected {
   font-size: 24px;
+  text-align: center;
 }
-.weatherDetails {
-  font-size: 20px;
+.weatherContainer {
+  border-bottom: 1px solid #dcdcdc; 
+  clear: right;
+  padding: 5px 10px;
+  
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  .weatherDetails {
+    font-size: 20px;
+    display: inline-block;
+    float: right;
+  }
+  .weatherCategory {
+    font-size: 16px;  
+    display: inline-block;
+  }
 }
-.weatherCategory {
-  font-size: 16px;  
-}
+
+@media only screen and (min-width: 768px) {
+  .weatherOuterContainer {
+    text-align: center;
+  }
+  .weatherContainer {
+    border-bottom: none; 
+    padding: 0;
+    .weatherDetails {
+      display: block;
+      float: none;
+    }
+    .weatherCategory {
+      display: block;
+    } 
+  }
+  .smallPadding-0 {
+    padding-bottom: 20px;
+  }
+  
+} 

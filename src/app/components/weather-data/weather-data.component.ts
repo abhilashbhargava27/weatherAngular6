@@ -77,7 +77,6 @@ export class WeatherDataComponent implements OnInit {
     }
 
     showPosition(position) {
-        var that = this;
         var geocoder = new google.maps.Geocoder;
         var latlng = {
             lat: parseFloat(position.coords.latitude),
@@ -89,13 +88,8 @@ export class WeatherDataComponent implements OnInit {
           if (status === 'OK') {
             //console.log(status,'status of geocoder')
             if (results[0]) {
-              //console.log("inside if statement of auto location fetch",results[0]);
-              var addressAutoComplete = results[0].formatted_address;
-              var valueAutoComplete = addressAutoComplete.split(",");
-              var countAutoComplete = valueAutoComplete.length;
-              var cityAutoComplete = valueAutoComplete[countAutoComplete - 3];
-              
-              //that.getWeatherData(cityAutoComplete);
+              console.log(results[0].formatted_address,'results[0].formatted_address')
+              //callback(results[0].formatted_address);
             } else {
                 console.log('No results found');
             }
@@ -104,7 +98,13 @@ export class WeatherDataComponent implements OnInit {
           }
         });
     }
-
+    displayAutoDetectWeather(autoDetectArea) {
+      var valueAutoComplete = autoDetectArea.split(",");
+      var countAutoComplete = valueAutoComplete.length;
+      var cityAutoComplete = valueAutoComplete[countAutoComplete - 3];
+      this.getWeatherData(cityAutoComplete);
+    }
+    
     logout() {
       localStorage.removeItem("weatherReportDetail");
       this.globals.userSignedIn = false;

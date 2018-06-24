@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
-	<div class="container">
-    <div class="weatherHeader">Weather Details</div>
-  </div>
-  <button id="butLogout" class="headerButton" aria-label="logout" (click)="logout()"></button>
+  <div class="weatherHeader">Weather Details</div>  
+  <ul class="nav navbar-nav ml-auto">
+    <li><button id="butLogout" class="headerButton" aria-label="logout" (click)="logout()"></button></li>
+  </ul>
 </nav>
 
 <div class="row justify-content-md-center">
@@ -23,37 +23,45 @@
         </div>
         <!-- <div *ngIf = "detailsFetched"> -->
           <ng-template ngFor let-item [ngForOf]="weatherData" let-i="index">
-            <div class="container">
-              <div class="card">
-                <div class="card-body">
-                  <div class="row text-center">
-                    <div class="col-sm-12 col-md-2">
+            <!-- <div class="container"> -->
+              <div class="card mb-4">
+                <div class="card-body smallPadding-0">
+                  <div class="row weatherOuterContainer">
+                    <div class="col-sm-12 col-md-2 no-gutter">
                       <div class="citySelected">{{item.name}}</div>      
                     </div>
-                    <div class="col-sm-12 col-md-2">
-                      <div class="weatherDetails">{{item.humidity}}</div>      
+                    <div class="col-sm-12 col-md-2 no-gutter weatherContainer">
                       <div class="weatherCategory">Humidity</div>
+                      <div class="weatherDetails">{{item.humidity}}</div>      
                     </div>
-                    <div class="col-sm-12 col-md-2">
-                      <div class="weatherDetails">{{item.pressure}}</div>    
-                      <div class="weatherCategory">Pressure</div>
+                    <div class="col-sm-12 col-md-2 no-gutter weatherContainer">
+                      
+                        <div class="weatherCategory">Pressure</div>
+                        <div class="weatherDetails">{{item.pressure}}</div>    
+                      
                     </div>
-                    <div class="col-sm-12 col-md-2">
-                      <div class="weatherDetails">{{item.temp | number:'1.0-0'}}&#8451;</div>    
-                      <div class="weatherCategory">Temperature</div>
+                    <div class="col-sm-12 col-md-2 no-gutter weatherContainer">
+                      
+                        <div class="weatherCategory">Temperature</div>
+                        <div class="weatherDetails">{{item.temp | number:'1.0-0'}}&#8451;</div>
+                      
                     </div>
-                    <div class="col-sm-12 col-md-2">
-                      <div class="weatherDetails">{{item.temp_max | number:'1.0-0'}}&#8451;</div>
-                      <div class="weatherCategory">Max. Temp</div>
+                    <div class="col-sm-12 col-md-2 no-gutter weatherContainer">
+                      
+                        <div class="weatherCategory">Max. Temp</div>
+                        <div class="weatherDetails">{{item.temp_max | number:'1.0-0'}}&#8451;</div>
+                      
                     </div>
-                    <div class="col-sm-12 col-md-2">
-                      <div class="weatherDetails">{{item.temp_min | number:'1.0-0'}}&#8451;</div>
-                      <div class="weatherCategory">Min. Temp</div>
+                    <div class="col-sm-12 col-md-2 no-gutter weatherContainer">
+                      
+                        <div class="weatherCategory">Min. Temp</div>
+                        <div class="weatherDetails">{{item.temp_min | number:'1.0-0'}}&#8451;</div>
+                      
                     </div>
                   </div>  
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
           </ng-template>
         <!-- </div> -->
       </div>
