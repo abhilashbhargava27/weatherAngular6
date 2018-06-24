@@ -89,7 +89,7 @@ export class WeatherDataComponent implements OnInit {
           if (status === 'OK') {
             //console.log(status,'status of geocoder')
             if (results[0]) {
-              //console.log("inside if statement of auto location fetch",results[0]);
+              
               var addressAutoComplete = results[0].formatted_address;
               var valueAutoComplete = addressAutoComplete.split(",");
               var countAutoComplete = valueAutoComplete.length;

@@ -148,13 +148,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _components_sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/sign-up/sign-up.component */ "./src/app/components/sign-up/sign-up.component.ts");
-/* harmony import */ var _components_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/not-found/not-found.component */ "./src/app/components/not-found/not-found.component.ts");
-/* harmony import */ var _components_weather_data_weather_data_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/weather-data/weather-data.component */ "./src/app/components/weather-data/weather-data.component.ts");
-/* harmony import */ var _components_splash_screen_splash_screen_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/splash-screen/splash-screen.component */ "./src/app/components/splash-screen/splash-screen.component.ts");
-/* harmony import */ var _components_sign_in_sign_in_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/sign-in/sign-in.component */ "./src/app/components/sign-in/sign-in.component.ts");
+/* harmony import */ var _globalVariable_globalVariable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./globalVariable/globalVariable */ "./src/app/globalVariable/globalVariable.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _components_sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/sign-up/sign-up.component */ "./src/app/components/sign-up/sign-up.component.ts");
+/* harmony import */ var _components_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/not-found/not-found.component */ "./src/app/components/not-found/not-found.component.ts");
+/* harmony import */ var _components_weather_data_weather_data_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/weather-data/weather-data.component */ "./src/app/components/weather-data/weather-data.component.ts");
+/* harmony import */ var _components_splash_screen_splash_screen_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/splash-screen/splash-screen.component */ "./src/app/components/splash-screen/splash-screen.component.ts");
+/* harmony import */ var _components_sign_in_sign_in_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/sign-in/sign-in.component */ "./src/app/components/sign-in/sign-in.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -172,27 +173,28 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-                _components_sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_6__["SignUpComponent"],
-                _components_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_7__["NotFoundComponent"],
-                _components_weather_data_weather_data_component__WEBPACK_IMPORTED_MODULE_8__["WeatherDataComponent"],
-                _components_splash_screen_splash_screen_component__WEBPACK_IMPORTED_MODULE_9__["SplashScreenComponent"],
-                _components_sign_in_sign_in_component__WEBPACK_IMPORTED_MODULE_10__["SignInComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
+                _components_sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_7__["SignUpComponent"],
+                _components_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_8__["NotFoundComponent"],
+                _components_weather_data_weather_data_component__WEBPACK_IMPORTED_MODULE_9__["WeatherDataComponent"],
+                _components_splash_screen_splash_screen_component__WEBPACK_IMPORTED_MODULE_10__["SplashScreenComponent"],
+                _components_sign_in_sign_in_component__WEBPACK_IMPORTED_MODULE_11__["SignInComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]
             ],
-            providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+            providers: [_globalVariable_globalVariable__WEBPACK_IMPORTED_MODULE_4__["Globals"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -272,7 +274,7 @@ var NotFoundComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-md-6 mx-auto pt-4\">\n    <div class=\"card\">\n      <div class=\"card-body\">\n        <h1 class=\"text-center pb-4 pt-3\">\n          <span class=\"text-primary\">Sign In</span>\n        </h1>\n        \n        <form #userSignInForm=\"ngForm\" (ngSubmit)=\"signinUser(userSignInForm)\">\n\n        \t<div *ngIf=\"signInError\" class=\"mismatchValueError\">\n\t        \tEmail and Password does not match.\n\t        </div>\n          <div class=\"form-group\">\n            <label for=\"email\">Email</label>\n            <input \n              type=\"text\" \n              class=\"form-control\" \n              [ngClass]=\"{'is-invalid':userEmail.errors && userEmail.touched}\"\n              name=\"email\" \n              id=\"email\" \n              required \n              [(ngModel)]=\"userSignInDetails.email\"\n              #userEmail=\"ngModel\"\n              pattern=\"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\"\n            >\n            <div [hidden]=\"!userEmail.errors?.required\" class=\"invalid-feedback\">\n              Email is required\n            </div>\n            <div [hidden]=\"!userEmail.errors?.pattern\" class=\"invalid-feedback\">\n              Email is not valid.\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <label for=\"password\">Password</label>\n            <input \n              type=\"password\" \n              class=\"form-control\" \n              [ngClass]=\"{'is-invalid':userPassword.errors && userPassword.touched}\"\n              name=\"password\" \n              id=\"password\" \n              required \n              [(ngModel)]=\"userSignInDetails.password\"\n              #userPassword=\"ngModel\"\n            >\n            <div [hidden]=\"!userPassword.errors?.required\" class=\"invalid-feedback\">\n              Password is required\n            </div>\n          </div>\n          <button [disabled]=\"!userSignInForm.form.valid\" class=\"btn btn-primary btn-block\">Submit</button>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-md-6 mx-auto pt-4\">\n    <div class=\"card\">\n      <div class=\"card-body\">\n        <h1 class=\"text-center pb-4 pt-3\">\n          <span class=\"text-primary\">Sign In</span>\n        </h1>\n        \n        <form #userSignInForm=\"ngForm\" (ngSubmit)=\"signinUser(userSignInForm)\">\n\n        \t<div *ngIf=\"signInError\" class=\"mismatchValueError\">\n\t        \tEmail and Password do not match.\n\t        </div>\n          <div class=\"form-group\">\n            <label for=\"email\">Email</label>\n            <input \n              type=\"text\" \n              class=\"form-control\" \n              [ngClass]=\"{'is-invalid':userEmail.errors && userEmail.touched}\"\n              name=\"email\" \n              id=\"email\" \n              required \n              [(ngModel)]=\"userSignInDetails.email\"\n              #userEmail=\"ngModel\"\n              pattern=\"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\"\n            >\n            <div [hidden]=\"!userEmail.errors?.required\" class=\"invalid-feedback\">\n              Email is required\n            </div>\n            <div [hidden]=\"!userEmail.errors?.pattern\" class=\"invalid-feedback\">\n              Email is not valid.\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <label for=\"password\">Password</label>\n            <input \n              type=\"password\" \n              class=\"form-control\" \n              [ngClass]=\"{'is-invalid':userPassword.errors && userPassword.touched}\"\n              name=\"password\" \n              id=\"password\" \n              required \n              [(ngModel)]=\"userSignInDetails.password\"\n              #userPassword=\"ngModel\"\n            >\n            <div [hidden]=\"!userPassword.errors?.required\" class=\"invalid-feedback\">\n              Password is required\n            </div>\n          </div>\n          <button [disabled]=\"!userSignInForm.form.valid\" class=\"btn btn-primary btn-block\">Submit</button>\n        </form>\n      </div>\n    </div>\n    <div class=\"signInText text-center\">Don't have an account? Click to <span class=\"signUnLink\" (click) = \"signUnPage()\">Sign Up!!</span></div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -283,7 +285,7 @@ module.exports = "<div class=\"row\">\n  <div class=\"col-md-6 mx-auto pt-4\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".mismatchValueError {\n  color: #dc3545; }\n"
+module.exports = ".mismatchValueError {\n  color: #dc3545; }\n\n.signUnLink {\n  color: #007bff;\n  cursor: pointer;\n  text-decoration: underline; }\n"
 
 /***/ }),
 
@@ -299,6 +301,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignInComponent", function() { return SignInComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _globalVariable_globalVariable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../globalVariable/globalVariable */ "./src/app/globalVariable/globalVariable.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -310,18 +313,24 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var SignInComponent = /** @class */ (function () {
-    function SignInComponent(router, elementRef) {
+    function SignInComponent(router, elementRef, globals) {
         this.router = router;
         this.elementRef = elementRef;
+        this.globals = globals;
         this.signInError = false;
         this.elementRef = elementRef;
     }
     SignInComponent.prototype.ngOnInit = function () {
+        //console.log(this.globals.userSignedIn,'this.globals.userSignedIn----')
         this.userSignInDetails = {
             email: '',
             password: ''
         };
+    };
+    SignInComponent.prototype.signUnPage = function () {
+        this.router.navigateByUrl('signup');
     };
     SignInComponent.prototype.signinUser = function (_a) {
         var value = _a.value, valid = _a.valid;
@@ -329,6 +338,7 @@ var SignInComponent = /** @class */ (function () {
         var storedPassword = localStorage.getItem('password');
         if ((value.email == storedEmail) && (value.password == storedPassword)) {
             this.signInError = false;
+            this.globals.userSignedIn = true;
             this.router.navigateByUrl('weather-data');
         }
         else {
@@ -345,7 +355,7 @@ var SignInComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./sign-in.component.html */ "./src/app/components/sign-in/sign-in.component.html"),
             styles: [__webpack_require__(/*! ./sign-in.component.scss */ "./src/app/components/sign-in/sign-in.component.scss")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], _globalVariable_globalVariable__WEBPACK_IMPORTED_MODULE_2__["Globals"]])
     ], SignInComponent);
     return SignInComponent;
 }());
@@ -361,7 +371,7 @@ var SignInComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-md-6 mx-auto pt-4\">\n    <div class=\"card\">\n      <div class=\"card-body\">\n        <h1 class=\"text-center pb-4 pt-3\">\n          <span class=\"text-primary\">Sign Up</span>\n        </h1>\n        <form #userForm=\"ngForm\" (ngSubmit)=\"signupUser(userForm)\">\n          <div class=\"form-group\">\n            <label for=\"name\">Name</label>\n            <input \n              type=\"text\" \n              class=\"form-control\" \n              [ngClass]=\"{'is-invalid':userName.errors && userName.touched}\"\n              name=\"name\" \n              id=\"name\" \n              required \n              [(ngModel)]=\"userDetails.name\"\n              #userName=\"ngModel\"\n            >\n            <div [hidden]=\"!userName.errors?.required\" class=\"invalid-feedback\">\n              Name is required.\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <label for=\"email\">Email</label>\n            <input \n              type=\"text\" \n              class=\"form-control\" \n              [ngClass]=\"{'is-invalid':userEmail.errors && userEmail.touched}\"\n              name=\"email\" \n              id=\"email\" \n              required \n              [(ngModel)]=\"userDetails.email\"\n              #userEmail=\"ngModel\"\n              pattern=\"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\"\n            >\n            <div [hidden]=\"!userEmail.errors?.required\" class=\"invalid-feedback\">\n              Email is required\n            </div>\n            <div [hidden]=\"!userEmail.errors?.pattern\" class=\"invalid-feedback\">\n              Email is not valid.\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <label for=\"password\">Password</label>\n            <input \n              type=\"password\" \n              class=\"form-control\" \n              [ngClass]=\"{'is-invalid':userPassword.errors && userPassword.touched}\"\n              name=\"password\" \n              id=\"password\" \n              required \n              [(ngModel)]=\"userDetails.password\"\n              #userPassword=\"ngModel\"\n              minlength=\"5\" \n            >\n            <div [hidden]=\"!userPassword.errors?.required\" class=\"invalid-feedback\">\n              Password is required\n            </div>\n            <div [hidden]=\"!userPassword.errors?.minlength\" class=\"invalid-feedback\">\n              Must be at least 5 characters.\n            </div>\n          </div>\n          <!-- <div class=\"form-group\">\n            <div><label for=\"uploadUserImage\">Select User Image</label></div>\n            <div>\n              <input type=\"file\" src=\" \" id=\"uploadUserImage\" crossOrigin='Anonymous' (change)=\"readURL(this)\"/>\n            </div>\n            <img src=\"\" id=\"userImage\" width=\"300\" height=\"227\">\n          </div> -->\n          <button [disabled]=\"!userForm.form.valid\" class=\"btn btn-primary btn-block\">Submit</button>\n        </form>\n\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-md-6 mx-auto pt-4\">\n    <div class=\"card\">\n      <div class=\"card-body\">\n        <h1 class=\"text-center pb-4 pt-3\">\n          <span class=\"text-primary\">Sign Up</span>\n        </h1>\n        <form #userForm=\"ngForm\" (ngSubmit)=\"signUpUser(userForm)\">\n          <div class=\"form-group\">\n            <label for=\"name\">Name</label>\n            <input \n              type=\"text\" \n              class=\"form-control\" \n              [ngClass]=\"{'is-invalid':userName.errors && userName.touched}\"\n              name=\"name\" \n              id=\"name\" \n              required \n              [(ngModel)]=\"userDetails.name\"\n              #userName=\"ngModel\"\n            >\n            <div [hidden]=\"!userName.errors?.required\" class=\"invalid-feedback\">\n              Name is required.\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <label for=\"email\">Email</label>\n            <input \n              type=\"text\" \n              class=\"form-control\" \n              [ngClass]=\"{'is-invalid':userEmail.errors && userEmail.touched}\"\n              name=\"email\" \n              id=\"email\" \n              required \n              [(ngModel)]=\"userDetails.email\"\n              #userEmail=\"ngModel\"\n              pattern=\"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\"\n            >\n            <div [hidden]=\"!userEmail.errors?.required\" class=\"invalid-feedback\">\n              Email is required\n            </div>\n            <div [hidden]=\"!userEmail.errors?.pattern\" class=\"invalid-feedback\">\n              Email is not valid.\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <label for=\"password\">Password</label>\n            <input \n              type=\"password\" \n              class=\"form-control\" \n              [ngClass]=\"{'is-invalid':userPassword.errors && userPassword.touched}\"\n              name=\"password\" \n              id=\"password\" \n              required \n              [(ngModel)]=\"userDetails.password\"\n              #userPassword=\"ngModel\"\n              minlength=\"5\" \n            >\n            <div [hidden]=\"!userPassword.errors?.required\" class=\"invalid-feedback\">\n              Password is required\n            </div>\n            <div [hidden]=\"!userPassword.errors?.minlength\" class=\"invalid-feedback\">\n              Must be at least 5 characters.\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <div><label for=\"uploadUserImage\">Select User Image</label></div>\n            <div>\n              <input type=\"file\" src=\" \" id=\"uploadUserImage\" crossOrigin='Anonymous' (change)=\"readURL(this)\"/>\n            </div>\n            <img src=\"\" id=\"userImage\" width=\"300\" height=\"227\">\n          </div>\n          <button [disabled]=\"!userForm.form.valid\" class=\"btn btn-primary btn-block\">Submit</button>\n        </form>\n\n      </div>\n    </div>\n    <div class=\"signInText text-center\">Already have an account? Click to <span class=\"signInLink\" (click) = \"signInPage()\">Sign In!!</span></div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -372,7 +382,7 @@ module.exports = "<div class=\"row\">\n  <div class=\"col-md-6 mx-auto pt-4\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#userImage {\n  display: none; }\n"
+module.exports = "#userImage {\n  display: none; }\n\n.signInLink {\n  color: #007bff;\n  cursor: pointer;\n  text-decoration: underline; }\n"
 
 /***/ }),
 
@@ -388,6 +398,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignUpComponent", function() { return SignUpComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _globalVariable_globalVariable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../globalVariable/globalVariable */ "./src/app/globalVariable/globalVariable.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -399,10 +410,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var SignUpComponent = /** @class */ (function () {
-    function SignUpComponent(router, elementRef) {
+    function SignUpComponent(router, elementRef, globals) {
         this.router = router;
         this.elementRef = elementRef;
+        this.globals = globals;
+        this.storedNameArray = [];
         this.elementRef = elementRef;
     }
     SignUpComponent.prototype.ngOnInit = function () {
@@ -411,34 +425,25 @@ var SignUpComponent = /** @class */ (function () {
             email: '',
             password: ''
         };
-        var storedName = localStorage.getItem('name');
-        var storedEmail = localStorage.getItem('email');
-        var storedPassword = localStorage.getItem('password');
-        if (storedName && storedEmail && storedPassword) {
-            this.router.navigateByUrl('weather-data');
-        }
     };
-    SignUpComponent.prototype.signupUser = function (_a) {
+    SignUpComponent.prototype.signInPage = function () {
+        this.router.navigateByUrl('signin');
+    };
+    SignUpComponent.prototype.signUpUser = function (_a) {
         var value = _a.value, valid = _a.valid;
         if (!valid) {
             console.log("form is not valid"); //This will never be printed coz of validation at client end
         }
         else {
-            var storedName = localStorage.getItem('name');
-            var storedEmail = localStorage.getItem('email');
-            var storedPassword = localStorage.getItem('password');
-            if (storedName && storedEmail && storedPassword) {
-                this.router.navigateByUrl('weather-data');
-            }
-            else {
-                var name_1 = value.name;
-                var email = value.email;
-                var password = value.password;
-                localStorage.setItem('name', name_1);
-                localStorage.setItem('email', email);
-                localStorage.setItem('password', password);
-                this.router.navigateByUrl('weather-data');
-            }
+            var name_1 = value.name;
+            var email = value.email;
+            var password = value.password;
+            localStorage.setItem('name', name_1);
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+            localStorage.removeItem("weatherReportDetail");
+            this.globals.userSignedIn = true;
+            this.router.navigateByUrl('weather-data');
         }
     };
     SignUpComponent.prototype.readURL = function (input) {
@@ -455,6 +460,7 @@ var SignUpComponent = /** @class */ (function () {
         }
         var userProfileImage = this.elementRef.nativeElement.querySelector('#userImage');
         var imgData = this.getBase64Image(userProfileImage);
+        console.log(imgData, 'imgData');
         localStorage.setItem("imgData", imgData);
     };
     SignUpComponent.prototype.getBase64Image = function (img) {
@@ -476,7 +482,7 @@ var SignUpComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./sign-up.component.html */ "./src/app/components/sign-up/sign-up.component.html"),
             styles: [__webpack_require__(/*! ./sign-up.component.scss */ "./src/app/components/sign-up/sign-up.component.scss")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], _globalVariable_globalVariable__WEBPACK_IMPORTED_MODULE_2__["Globals"]])
     ], SignUpComponent);
     return SignUpComponent;
 }());
@@ -593,6 +599,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _globalVariable_globalVariable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../globalVariable/globalVariable */ "./src/app/globalVariable/globalVariable.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -605,12 +612,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var WeatherDataComponent = /** @class */ (function () {
-    function WeatherDataComponent(cdr, elementRef, http, router) {
+    function WeatherDataComponent(cdr, elementRef, http, router, globals) {
         this.cdr = cdr;
         this.elementRef = elementRef;
         this.http = http;
         this.router = router;
+        this.globals = globals;
         this.humidity = 0;
         this.pressure = 0;
         this.temp = 0;
@@ -624,18 +633,13 @@ var WeatherDataComponent = /** @class */ (function () {
     WeatherDataComponent.prototype.ngOnInit = function () {
         this.userName = localStorage.getItem('name');
         this.weatherData = JSON.parse(localStorage.getItem("weatherReportDetail"));
-        console.log(this.weatherData, 'weatherDataExists');
-        if (!this.userName) {
-            this.router.navigateByUrl('/signup');
-        }
-        var dataImage = localStorage.getItem('imgData');
-        console.log(dataImage);
-        var userImage = this.elementRef.nativeElement.querySelector('#userProfileImage');
+        //var dataImage = localStorage.getItem('imgData');
+        //var userImage = this.elementRef.nativeElement.querySelector('#userProfileImage');
         //userImage.src = "data:image/png;base64," + dataImage;
     };
     WeatherDataComponent.prototype.getWeatherData = function (city) {
         var _this = this;
-        this.http.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=43b9e8c04ab96f4ecce7d6d1fd45b859").
+        this.http.get("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=43b9e8c04ab96f4ecce7d6d1fd45b859").
             subscribe(function (data) {
             _this.displayWeatherDetails(data);
         });
@@ -648,6 +652,7 @@ var WeatherDataComponent = /** @class */ (function () {
             var value = address.split(",");
             var count = value.length;
             var city = value[count - 3];
+            //console.log(city);
             _this.getWeatherData(city);
         });
     };
@@ -660,6 +665,7 @@ var WeatherDataComponent = /** @class */ (function () {
         }
     };
     WeatherDataComponent.prototype.showPosition = function (position) {
+        var that = this;
         var geocoder = new google.maps.Geocoder;
         var latlng = {
             lat: parseFloat(position.coords.latitude),
@@ -669,8 +675,13 @@ var WeatherDataComponent = /** @class */ (function () {
             'location': latlng
         }, function (results, status) {
             if (status === 'OK') {
+                //console.log(status,'status of geocoder')
                 if (results[0]) {
-                    console.log(results, "result of geocoder");
+                    var addressAutoComplete = results[0].formatted_address;
+                    var valueAutoComplete = addressAutoComplete.split(",");
+                    var countAutoComplete = valueAutoComplete.length;
+                    var cityAutoComplete = valueAutoComplete[countAutoComplete - 3];
+                    //that.getWeatherData(cityAutoComplete);
                 }
                 else {
                     console.log('No results found');
@@ -682,8 +693,9 @@ var WeatherDataComponent = /** @class */ (function () {
         });
     };
     WeatherDataComponent.prototype.logout = function () {
-        localStorage.clear();
-        this.router.navigateByUrl('/');
+        localStorage.removeItem("weatherReportDetail");
+        this.globals.userSignedIn = false;
+        this.router.navigateByUrl('/signin');
     };
     WeatherDataComponent.prototype.toggleHide = function () {
         this.searchBox = !this.searchBox;
@@ -696,6 +708,7 @@ var WeatherDataComponent = /** @class */ (function () {
     };
     WeatherDataComponent.prototype.displayWeatherDetails = function (weatherDetails) {
         this.detailsFetched = true;
+        //console.log(weatherDetails,weatherDetails)
         this.weather = weatherDetails.weather[0].main;
         var weatherReportDetail = [{
                 "name": weatherDetails.name,
@@ -743,9 +756,42 @@ var WeatherDataComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"],
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _globalVariable_globalVariable__WEBPACK_IMPORTED_MODULE_3__["Globals"]])
     ], WeatherDataComponent);
     return WeatherDataComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/globalVariable/globalVariable.ts":
+/*!**************************************************!*\
+  !*** ./src/app/globalVariable/globalVariable.ts ***!
+  \**************************************************/
+/*! exports provided: Globals */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Globals", function() { return Globals; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var Globals = /** @class */ (function () {
+    function Globals() {
+        this.userSignedIn = false;
+    }
+    Globals = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])()
+    ], Globals);
+    return Globals;
 }());
 
 
