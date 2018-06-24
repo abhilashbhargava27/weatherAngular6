@@ -43,7 +43,13 @@
     display: inline-block;
   }
 }
-
+.locationSearchBoxContainer {
+  margin-left: 10px;
+}
+.locationSearchBox {
+  border: 1px solid #dcdcdc;
+  padding: 3px 0 3px 10px;
+}
 @media only screen and (min-width: 768px) {
   .weatherOuterContainer {
     text-align: center;
@@ -62,5 +68,4 @@
   .smallPadding-0 {
     padding-bottom: 20px;
   }
-  
 } 
