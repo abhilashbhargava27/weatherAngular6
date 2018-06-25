@@ -11,15 +11,18 @@
     <!-- <img src="" id="userProfileImage"/> -->
     <div class="card">
       <div class="card-body">
-        <div class="userName ml-2">Hi {{userName}}</div>
+        <div class="userName ml-2 mb-2">Hi {{userName}}</div>
+        <button (click)="getLocationWeather()" class="btn btn-dark btn-sm ml-2 mb-2">Fetch Weather for my Location</button>
+        
         <div class="row ml-2">
-          <div class="infoToStart mb-3">Click on Add a city to get the forecast details for the city!!</div>
+          <div class="infoToStart mb-2">Click on Add a city to get the forecast details for the city!!</div>
         </div>
         <div class="row ml-2 mb-3">
           <button (click)="toggleHide()" class="btn btn-dark btn-sm">Add a City</button>
+        
           <span *ngIf = "searchBoxVisibility" class="locationSearchBoxContainer">
             <input class="locationSearchBox" id="txtPlaces" type="text" placeholder="Enter a location">  
-          </span>
+          </span>  
         </div>
         <!-- <div *ngIf = "detailsFetched"> -->
           <ng-template ngFor let-item [ngForOf]="weatherData" let-i="index">

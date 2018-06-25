@@ -68,33 +68,32 @@ export class WeatherDataComponent implements OnInit {
 
     getLocation() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.showPosition);
+            navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
         } else {
             console.log("Geolocation is not supported by this browser.");
         }
     }
 
     showPosition(position) {
-        var geocoder = new google.maps.Geocoder;
-        var latlng = {
-            lat: parseFloat(position.coords.latitude),
-            lng: parseFloat(position.coords.longitude)
-        };
-        geocoder.geocode({
-            'location': latlng
-        }, function(results, status) {
-          if (status === 'OK') {
-            //console.log(status,'status of geocoder')
-            if (results[0]) {
-              console.log(results[0].formatted_address,'results[0].formatted_address')
-              //callback(results[0].formatted_address);
-            } else {
-                console.log('No results found');
-            }
+      var that = this;
+      var geocoder = new google.maps.Geocoder;
+      var latlng = {
+        lat: parseFloat(position.coords.latitude),
+        lng: parseFloat(position.coords.longitude)
+      };
+      geocoder.geocode({
+        'location': latlng
+      }, function(results, status) {
+        if (status === 'OK') {
+          if (results[0]) {
+            that.displayAutoDetectWeather(results[0].formatted_address);
           } else {
-              console.log('Geocoder failed due to: ' + status);
+              console.log('No results found');
           }
-        });
+        } else {
+          console.log('Geocoder failed due to: ' + status);
+        }
+      });
     }
 
     displayAutoDetectWeather(autoDetectArea) {
@@ -112,19 +111,18 @@ export class WeatherDataComponent implements OnInit {
 
     toggleHide() {
       this.searchBoxVisibility = !this.searchBoxVisibility;
-
-      ( < any > window).googleMapsReady = this.autocomplete.bind(this);
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        document.getElementsByTagName("head")[0].appendChild(script);
-        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD1VrN_wtyp9e4hfkhSI3pDYYr1hrI-AcA&sensor=false&libraries=places&callback=googleMapsReady";
-        
-        this.getLocation();
     }
-    
+    getLocationWeather() {
+      ( < any > window).googleMapsReady = this.autocomplete.bind(this);
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      document.getElementsByTagName("head")[0].appendChild(script);
+      script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD1VrN_wtyp9e4hfkhSI3pDYYr1hrI-AcA&sensor=false&libraries=places&callback=googleMapsReady";
+      
+      this.getLocation();
+    }
     displayWeatherDetails(weatherDetails) {
       this.detailsFetched = true;
-      //console.log(weatherDetails,weatherDetails)
       this.weather = weatherDetails.weather[0].main;
 
       var weatherReportDetail = [{ 
